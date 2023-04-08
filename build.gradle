@@ -24,12 +24,6 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
-    maven {
-        url "https://cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
 }
 
 version = mod_minecraft_version + "-" + mod_version
@@ -148,8 +142,6 @@ dependencies {
 
     // at runtime, use the full JEI jar
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_minecraft_version}-forge:${jei_version}")
-
-    implementation fg.deobf("curse.maven:tnt-ultra-484302:4433349")
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
