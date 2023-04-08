@@ -1,5 +1,6 @@
 package com.unixkitty.boomstick.block;
 
+import com.unixkitty.boomstick.Config;
 import com.unixkitty.boomstick.entity.Boom;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -39,8 +40,10 @@ public class BoomStickBlock extends LeverBlock
         BlockPos affectedPos = pos.relative(getConnectedDirection(blockState).getOpposite());
 
         //Lever will only trigger blocks that have have half of Obsidian's explosion resistance
-        if (level.getBlockState(affectedPos).getBlock().getExplosionResistance() < Blocks.OBSIDIAN.getExplosionResistance() / 2)
+        if (level.getBlockState(affectedPos).getBlock().getExplosionResistance() < Config.targetExplosionResistance.get())
         {
+            level.setBlock(pos, Blocks.AIR.defaultBlockState(), 4);
+
             explode(level, affectedPos, null);
 
             level.setBlock(affectedPos, Blocks.AIR.defaultBlockState(), 11);

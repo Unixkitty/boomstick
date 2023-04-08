@@ -3,7 +3,9 @@ package com.unixkitty.boomstick;
 import com.unixkitty.boomstick.init.ModRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,6 +21,7 @@ public class Boomstick
 
     public Boomstick()
     {
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON_CONFIG);
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         MinecraftForge.EVENT_BUS.register(ModRegistry.class);
